@@ -238,6 +238,25 @@ button:hover {
   box-shadow: 0 8px 16px rgba(79, 111, 75, 0.25);
 }
 
+.form-status {
+  min-height: 1.4em;
+  margin: 12px 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.form-status[data-state="pending"] {
+  color: #56705b;
+}
+
+.form-status[data-state="success"] {
+  color: #3f6d43;
+}
+
+.form-status[data-state="error"] {
+  color: #8b554f;
+}
+
 details {
   border: 1px solid rgba(79, 111, 75, 0.2);
   border-radius: 14px;
