@@ -7,7 +7,7 @@ function doPost(e) {
   const data = e.parameter;
 
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['Timestamp', 'Full Name', 'Email', 'Attendance', 'Number of Guests', 'Dietary Restrictions', 'Message']);
+    sheet.appendRow(['Timestamp', 'Full Name', 'Email', 'Attendance', 'Dietary Restrictions', 'Message']);
   }
 
   sheet.appendRow([
@@ -15,7 +15,6 @@ function doPost(e) {
     data.fullName || '',
     data.email || '',
     data.attendance || '',
-    data.guests || '',
     data.dietary || '',
     data.message || ''
   ]);
