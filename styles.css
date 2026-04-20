@@ -10,6 +10,8 @@
   --card: #fcfffb;
   --radius: 20px;
   --shadow-soft: 0 12px 35px rgba(62, 95, 58, 0.14);
+  --bg-shift: 0px;
+  --bg-scale: 1.02;
 }
 
 * {
@@ -359,5 +361,67 @@ footer {
 
   .qr-box {
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  body.mobile-bg-motion {
+    background:
+      radial-gradient(circle at 90% 10%, rgba(189, 216, 180, 0.35), transparent 45%),
+      radial-gradient(circle at 12% 30%, rgba(232, 241, 229, 0.8), transparent 40%),
+      linear-gradient(180deg, #f7fbf6 0%, #eef5ec 45%, #e8f1e5 100%);
+  }
+
+  body.mobile-bg-motion::before {
+    content: "";
+    position: fixed;
+    inset: -4%;
+    background: url("yohana&emil.jpg") center / cover no-repeat;
+    transform: translate3d(0, var(--bg-shift), 0) scale(var(--bg-scale));
+    transform-origin: center;
+    z-index: -1;
+    will-change: transform;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-reveal {
+    opacity: 0;
+    transform: translateY(22px) scale(0.985);
+    filter: blur(2px);
+    transition:
+      opacity 560ms ease,
+      transform 560ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      filter 560ms ease;
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform, filter;
+  }
+
+  .mobile-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  .panel.mobile-reveal {
+    transition-duration: 620ms;
+  }
+
+  .event-card.mobile-reveal {
+    transform: translateY(18px) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.mobile-bg-motion::before {
+    transform: none;
+    will-change: auto;
+  }
+
+  .mobile-reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
   }
 }
